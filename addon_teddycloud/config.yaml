@@ -17,9 +17,10 @@ ports:
 image: ghcr.io/toniebox-reverse-engineering/teddycloud
 advanced: true
 init: false
-#map:
-#  - config:rw
-#  - ssl
+map:
+  - config
+  - ssl
+webui: https://[HOST]:[PORT:9443]
 # options:
 #   defaults:
 #     - 8.8.8.8
