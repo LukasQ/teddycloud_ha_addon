@@ -1,0 +1,53 @@
+name: "TeddyCloud"
+description: "TeddyCloud Instance for Home Assistant"
+url: https://github.com/LukasQ/teddycloud_ha_addon
+version: "0.3.4"
+slug: "teddycloud_ha"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: application
+ports:
+  80/tcp: 9080
+  443/tcp: 9443
+image: ghcr.io/toniebox-reverse-engineering/teddycloud
+advanced: true
+init: false
+#map:
+#  - config:rw
+#  - ssl
+# options:
+#   defaults:
+#     - 8.8.8.8
+#     - 8.8.4.4
+#   forwards: []
+#   hosts: []
+#   services: []
+#   cnames: []
+#   log_queries: false
+# ports:
+#   53/tcp: 53
+#   53/udp: 53
+# schema:
+#   defaults:
+#     - str
+#   forwards:
+#     - domain: str
+#       server: str
+#   hosts:
+#     - host: str
+#       ip: str
+#   services:
+#     - host: str
+#       port: str
+#       priority: int
+#       srv: str
+#       weight: int
+#   cnames:
+#     - name: str
+#       target: str
+#   log_queries: bool
