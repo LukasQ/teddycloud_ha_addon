@@ -14,13 +14,17 @@ startup: application
 ports:
   80/tcp: 9080
   443/tcp: 9443
-image: ghcr.io/toniebox-reverse-engineering/teddycloud
+# image: ghcr.io/toniebox-reverse-engineering/teddycloud
 advanced: true
 init: false
 map:
   - config
   - ssl
-webui: https://[HOST]:[PORT:9443]
+webui: https://[HOST]:[PORT:443]
+#discovery: mqtt # to be checked
+#panel_icon: 
+#panel_title: 
+stage: experimental
 # options:
 #   defaults:
 #     - 8.8.8.8

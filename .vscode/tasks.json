@@ -1,0 +1,94 @@
+// Makefile
+// ${workspaceRoot} the path of the folder opened in VS Code
+// ${file} the current opened file
+// ${fileBasename} the current opened file's basename
+// ${fileDirname} the current opened file's dirname
+// ${fileExtname} the current opened file's extension
+// ${cwd} the task runner's current working directory on startup
+{
+    "version": "2.0.0",
+    "command": "bash",
+    "options": {
+        "cwd": "${workspaceRoot}"
+    },
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "cmd.exe",
+                "args": [
+                    "/C",
+                    // The path to VsDevCmd.bat depends on the version of Visual Studio you have installed.
+                    "\"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools/VsDevCmd.bat\"",
+                    "&&"
+                ]
+            }
+        }
+    },
+    "tasks": [
+        {
+            "label": "build",
+            "group": "build",
+            "command": "make build OPTI_LEVEL=-Og",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "clean",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "command": "make clean",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "[wsl] build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "type": "process",
+            "command": "bash",
+            "args": [
+                "-c",
+                "make build"
+            ]
+        },
+        {
+            "label": "[wsl] clean",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "type": "process",
+            "command": "bash",
+            "args": [
+                "-c",
+                "make clean"
+            ]
+        },
+        {
+            "label": "[win32] build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "make PLATFORM=windows OPTI_LEVEL=-Og build",
+            "type": "shell",
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "[win32] clean",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "command": "make PLATFORM=windows clean",
+            "type": "shell",
+            "problemMatcher": []
+        }
+    ]
+}
